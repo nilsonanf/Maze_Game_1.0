@@ -1,6 +1,6 @@
 #include"libs.h"
 
-float px, py /*player position*/, pdx, pdy, pa /*delta x, delta y and angle of the player*/ , front_dis;
+float px, py /*player position*/, pdx, pdy, pa /*delta x, delta y and angle of the player*/ , front_dis;//distance btw player's front side and walls
 int lvl = 0, fmes = 0;
 void drawPlayer()
 {
@@ -32,7 +32,7 @@ int mapWall[] =
 	1,0,0,0,0,0,0,0,0,0,1,1,0,1,0,1,1,0,1,1,1,0,1,0,1,1,0,1,1,1,0,1,
 	1,0,1,1,1,0,1,1,1,1,1,0,0,1,0,1,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,1,
 	1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,
-	1,0,1,1,1,1,1,1,1,1,1,1,0,1,0,0,1,0,0,0,1,0,0,0,0,1,1,1,1,1,0,1,
+	1,0,1,1,1,1,1,1,1,1,1,1,0,1,0,0,1,0,0,0,0,0,0,0,0,1,1,1,1,1,0,1,
 	1,0,1,0,0,0,0,0,0,0,0,0,0,1,1,0,1,1,1,1,0,0,1,1,0,1,0,0,0,1,0,1,
 	1,0,1,0,1,0,1,0,1,0,1,0,1,1,0,0,0,0,1,1,0,1,1,1,0,1,0,1,0,1,0,1,
 	1,1,1,1,1,1,1,0,1,1,1,1,1,1,0,0,0,0,0,0,0,1,0,1,0,1,0,1,1,1,0,1,
@@ -40,11 +40,11 @@ int mapWall[] =
 	1,0,0,0,0,0,0,0,1,1,1,1,1,1,1,0,1,1,1,1,0,1,0,1,1,1,1,1,1,1,0,1,
 	1,0,1,1,1,1,1,1,1,0,1,0,1,1,0,0,1,0,0,1,0,1,0,1,0,0,0,1,0,1,0,1,
 	1,0,1,0,0,0,0,0,0,0,1,0,0,1,0,1,1,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,
-	1,0,1,0,1,0,1,0,1,0,1,0,0,0,0,0,0,0,0,1,0,1,0,1,0,1,0,1,0,1,0,1,
-	1,0,1,1,1,0,1,0,1,1,1,0,1,1,0,0,0,0,0,1,0,1,0,1,0,1,0,1,0,0,0,1,
+	1,0,1,0,1,0,1,0,1,0,1,0,0,0,0,1,0,0,0,0,0,1,0,1,0,1,0,1,0,1,0,1,
+	1,0,1,1,1,0,1,0,1,1,1,0,1,1,0,1,1,0,1,1,0,1,0,1,0,1,0,1,0,0,0,1,
 	1,0,0,0,0,0,0,0,1,1,0,0,1,1,0,0,0,0,0,1,0,1,0,1,0,1,0,1,0,1,0,1,
-	1,1,1,1,1,1,1,0,1,0,0,1,1,1,0,0,0,0,0,1,0,1,0,1,0,1,1,1,0,1,0,1,
-	1,1,1,1,1,1,1,0,1,0,1,1,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,1,
+	1,1,1,1,1,1,1,0,1,0,0,1,1,1,0,1,1,1,0,1,0,1,0,1,0,1,1,1,0,1,0,1,
+	1,1,1,1,1,1,1,0,1,0,1,1,0,1,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,1,0,1,
 	1,0,0,0,0,0,1,0,1,0,1,0,0,1,0,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,0,1,
 	1,0,1,0,1,0,1,0,1,0,1,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,1,
 	1,0,1,1,1,0,1,0,0,0,1,0,0,1,0,1,0,1,1,1,0,1,1,1,1,1,1,0,1,0,0,1,
@@ -55,7 +55,7 @@ int mapWall[] =
 };
 
 int mapXt = 32, mapYt = 32, mapSt = 16; //mapX- number of elements on X axis, mapY- number of elements on Y axis, mapS-elements size (in this case the map is 512x512)
-int mapTarget1[] =
+int mapTarget1[] = //bronze ribbon map level 1
 {
 	0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 	0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -91,7 +91,7 @@ int mapTarget1[] =
 	0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 };
 
-int mapTarget2[] =
+int mapTarget2[] = //silver ribbon map level 2
 {
 	0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 	0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,
@@ -127,7 +127,7 @@ int mapTarget2[] =
 	0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 };
 
-int mapTarget3[] =
+int mapTarget3[] = //gold ribbon map level 3
 {
 	0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 	0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -186,15 +186,6 @@ void drawMap2D() {
 		}
 	}
 }
-
-//void reshape(int w, int h)
-//{
-	//glViewport(0, 0, (GLsizei)w, (GLsizei)h);
-	//glMatrixMode(GL_PROJECTION);
-	//glLoadIdentity();
-	//glOrtho(0, 1024, 512, 0, -1, 1);
-	//glMatrixMode(GL_MODELVIEW);
-//}
 
 float dist(float ax, float ay, float bx, float by, float ang)
 {
@@ -420,32 +411,18 @@ void drawRays3D()
 		
 		float lineH;
 		float ca = pa - ra;
-		if (ca < 0)
-		{
-		ca += 2 * PI;
-		}
-		if (ca > 2 * PI)
-		{
-		ca -= 2 * PI;
-		}
+		if (ca < 0)	{	ca += 2 * PI;}
+		if (ca > 2 * PI){	ca -= 2 * PI;}
+
 		if (disVt <= disHt && disVt <= disVw && disVt <= disHw)
 		{
 			rx = vxt;
 			ry = vyt;
 			disTt = disVt * cos(ca);
 			disTw = 100000;
-			if (lvl == 1)
-			{
-				glColor3f(0.8039, 0.498, 0.1961);
-			}
-			if (lvl == 2)
-			{
-				glColor3f(0.7529, 0.7529, 0.7529);
-			}
-			if (lvl == 3)
-			{
-				glColor3f(0.8549, 0.6471, 0.1255);
-			}
+			if (lvl == 1){	glColor3f(0.8039, 0.498, 0.1961);}
+			if (lvl == 2){	glColor3f(0.7529, 0.7529, 0.7529);}
+			if (lvl == 3){	glColor3f(0.8549, 0.6471, 0.1255);}
 			lineH = (mapSt * 200) / disTt;
 		}
 		if (disHt < disVt && disHt <= disHw && disHt <= disVw)
@@ -454,18 +431,9 @@ void drawRays3D()
 			ry = hyt;
 			disTt = disHt* cos(ca);
 			disTw = 100000;
-			if (lvl == 1)
-			{
-				glColor3f(0.8039, 0.498, 0.1961);
-			}
-			if (lvl == 2)
-			{
-				glColor3f(0.7529, 0.7529, 0.7529);
-			}
-			if (lvl == 3)
-			{
-				glColor3f(0.8549, 0.6471, 0.1255);
-			}
+			if (lvl == 1){	glColor3f(0.8039, 0.498, 0.1961);}
+			if (lvl == 2){	glColor3f(0.7529, 0.7529, 0.7529);}
+			if (lvl == 3){	glColor3f(0.8549, 0.6471, 0.1255);}
 			lineH = (mapSt * 200) / disTt;
 		}
 		if (disVw <= disHw && disVw < disVt && disVw < disHt)
@@ -474,18 +442,9 @@ void drawRays3D()
 			ry = vyw;
 			disTw = disVw* cos(ca);
 			disTt = 100000;
-			if (lvl == 1)
-			{
-				glColor3f(0.7451, 0.902, 0.9373);
-			}
-			if (lvl == 2)
-			{
-				glColor3f(0.898, 0.902, 0.6039);
-			}
-			if (lvl == 3)
-			{
-				glColor3f(0.898, 0.6353, 0.5882);
-			}
+			if (lvl == 1){	glColor3f(0.7451, 0.902, 0.9373);}
+			if (lvl == 2){	glColor3f(0.898, 0.902, 0.6039);}
+			if (lvl == 3){	glColor3f(0.898, 0.6353, 0.5882);}
 			lineH = (mapSw * 420) / disTw;
 		}
 		if (disHw < disVw && disHw < disHt && disHw < disVt)
@@ -494,20 +453,12 @@ void drawRays3D()
 			ry = hyw;
 			disTw = disHw * cos(ca);
 			disTt = 100000;
-			if (lvl == 1)
-			{
-				glColor3f(0.4545, 0.80, 0.8706);
-			}
-			if (lvl == 2)
-			{
-				glColor3f(0.8353, 0.8431, 0.3608);
-			}
-			if (lvl == 3)
-			{
-				glColor3f(0.8392, 0.4235, 0.349);
-			}
+			if (lvl == 1){	glColor3f(0.4545, 0.80, 0.8706);}
+			if (lvl == 2){	glColor3f(0.8353, 0.8431, 0.3608);}
+			if (lvl == 3){	glColor3f(0.8392, 0.4235, 0.349);}
 			lineH = (mapSw * 420) / disTw;
 		}
+		//draw rays
 		/*glLineWidth(1);
 		glBegin(GL_LINES);
 		glVertex2i(px, py);
@@ -516,10 +467,7 @@ void drawRays3D()
 
 		//------DRAW 3D Walls--------
 		
-		if (lineH > 420)
-		{
-			lineH = 420;
-		}
+		if (lineH > 420){lineH = 420;}
 		float lineO = 260 - lineH / 2;
 		
 		glLineWidth(8);
@@ -532,49 +480,36 @@ void drawRays3D()
 			if (disTt<=disTw)
 			{
 				front_dis = disTt;
-				if (disTt < 3 && dcont==0)
-				{
-					lvl = lvl + 1;
-					dcont = 1;
-				}
+				if (disTt < 3 && dcont==0){lvl = lvl + 1;	dcont = 1;}
 			}
-			else
-			{
-				front_dis = disTw;
-			}
+			else{front_dis = disTw;}
 		}
 		ra += 0.125*DR;
-		if (ra < 0)
-		{
-			ra += 2 * PI;
-		}
-		if (ra > 2 * PI)
-		{
-			ra -= 2 * PI;
-		}
+		if (ra < 0){ra += 2 * PI;}
+		if (ra > 2 * PI){ra -= 2 * PI;}
 	}
 }
 
 
 void display() {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	if (lvl == 0 && fmes==0)
-	{
-		MessageBox(NULL, L"You must find and touch the three prizes hided in the maze: \nBronze Ribbon - Level 1\nSilver Ribbon - Level 2\nGold Ribbon - Level 3\nCommands:\nW - Foward\nA - Rotate Left\nD - Rotate Right\nEach level will be harder.\nGOOD LUCK!", L"THIS IS A MAZE GAME", 0);
-		fmes = 1;
-		lvl=1;
-	}
 	drawMap2D();
 	drawPlayer();
 	drawRays3D();
 	glutSwapBuffers();
 	if (lvl == 4)
 	{
-		MessageBox(NULL, L"Congrats you won!", L"THIS IS A MAZE GAME", 0);
+		MessageBox(NULL, L"Congrats, you won!", L"THIS IS A MAZE GAME", 0);
 		lvl=0;
 		fmes = 0;
 		px = 244;
 		py = 244;
+	}
+	if (lvl == 0 && fmes == 0)
+	{
+		MessageBox(NULL, L"You must find and touch the three prizes hidden in the maze: \nBronze Ribbon - Level 1\nSilver Ribbon - Level 2\nGold Ribbon - Level 3\nCommands:\nW - Foward\nA - Rotate Left\nD - Rotate Right\nEach level will be harder.\nGOOD LUCK!", L"THIS IS A MAZE GAME", 0);
+		fmes = 1;
+		lvl = 1;
 	}
 }
 
@@ -582,19 +517,13 @@ void buttons(unsigned char key, int x, int y)
 {
 	if (key == 'a') {
 		pa -= 0.1;
-		if (pa < 0)
-		{
-			pa += 2 * PI;
-		}
-		pdx = cos(pa) * 3;//multiply to make the turn faster
+		if (pa < 0){pa += 2 * PI;		}
+		pdx = cos(pa) * 3;//multiply by a constant = turning faster or slower
 		pdy = sin(pa) * 3;
 	}
 	if (key == 'd') {
 		pa += 0.1;
-		if (pa > 2*PI)
-		{
-			pa -= 2 * PI;
-		}
+		if (pa > 2*PI){pa -= 2 * PI;}
 		pdx = cos(pa) * 3;
 		pdy = sin(pa) * 3;
 	}
@@ -602,21 +531,12 @@ void buttons(unsigned char key, int x, int y)
 		px += pdx;
 		py += pdy;
 	}
-	/*if (key == 's' && front_dis>1) {
-		px -= pdx;
-		py -= pdy;
-	}*/
 	glutPostRedisplay();
 }
 
 void init() {
 	glClearColor(0.3f,0.3f,0.3f,0);
-	//glMatrixMode(GL_PROJECTION);
-	//glLoadIdentity();
-	//glOrtho(0, 1024, 512, 0, -1, 1);
-	//glMatrixMode(GL_MODELVIEW);
 	glOrtho(0, 1536, 512, 0, -1, 1);
-	//reshape(1024, 512);
 	px = 244;
 	py = 244;
 	pdx = cos(pa) * 5;
